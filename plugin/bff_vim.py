@@ -1,5 +1,6 @@
+import vim
+import string
 def parse_line(line):
-    print line
     parentheses_count = 0;
     angle_count = 0;
     curly_brace_count = 0;
@@ -34,11 +35,16 @@ def parse_line(line):
     return_buffer = string.split(parsed_line, "\n")
     return return_buffer
 
-#b = vim.current.buffer
-#new_buffer = []
-#for line_number in range(len(b)):
-#    new_buffer.extend(parse_line(b[line_number]))
-#
-#del b[:]
-#for line in new_buffer:
-#  b.append(line)
+b = vim.current.buffer
+new_buffer = []
+original_length = len(b)
+for line_number in range(original_length):
+    new_buffer.extend(parse_line(b[line_number]))
+
+for string in vim.current.range:
+    print string
+
+del b[:]
+for line in new_buffer:
+  b.append(line)
+del b[0]
