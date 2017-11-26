@@ -4,9 +4,9 @@ if !has('python')
   finish
 endif
 
-function! BFF()
+function! BFF() range
   exe 'pyfile ' . escape(s:plugin_path, ' ') . '/bff_vim.py'
-  python run()
+  python format()
 endfunction
  
-command! BFF call BFF()
+command! -range BFF <line1>,<line2>call BFF()
