@@ -2,4 +2,6 @@
 
 Installation: compatible with pathogen (and vundle).
 
+Run command: `BFF` to format entire file.
+
 
